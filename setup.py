@@ -1,13 +1,4 @@
-
-from __future__ import with_statement
-
-# http://docs.python.org/distutils/
-# http://packages.python.org/distribute/
-try:
-    from setuptools import setup
-except:
-    from distutils.core import setup
-
+from setuptools import setup, find_packages
 import os.path
 
 version_py = os.path.join(os.path.dirname(__file__), 'usbtmc', 'version.py')
@@ -17,17 +8,17 @@ with open(version_py, 'r') as f:
     version = d['__version__']
 
 setup(
-    name = 'python-usbtmc',
-    description = 'Python USBTMC driver for controlling instruments over USB',
-    version = version,
-    long_description = '''This Python package supports the USBTMC instrument
+    name='python-usbtmc',
+    description='Python USBTMC driver for controlling instruments over USB',
+    version=version,
+    long_description='''This Python package supports the USBTMC instrument
 control protocol for controlling instruments over USB.''',
-    author = 'Alex Forencich',
-    author_email = 'alex@alexforencich.com',
-    url = 'http://alexforencich.com/wiki/en/python-usbtmc/start',
-    download_url = 'http://github.com/python-ivi/python-usbtmc/tarball/master',
-    keywords = 'USB USBTMC measurement instrument',
-    license = 'MIT License',
+    author='Alex Forencich',
+    author_email='alex@alexforencich.com',
+    url='http://alexforencich.com/wiki/en/python-usbtmc/start',
+    download_url='http://github.com/python-ivi/python-usbtmc/tarball/master',
+    keywords='USB USBTMC measurement instrument',
+    license='MIT License',
     classifiers=[
         'Development Status :: 4 - Beta',
         'Environment :: Console',
@@ -41,7 +32,13 @@ control protocol for controlling instruments over USB.''',
         'Topic :: System :: Networking',
         'Programming Language :: Python :: 2',
         'Programming Language :: Python :: 3'
-        ],
-    packages = ['usbtmc']
+    ],
+    packages=find_packages(),
+    install_requires=[
+        # Add any dependencies your project might have
+    ],
+    entry_points={
+        # If your package includes any console scripts, you can define them here
+    },
+    python_requires='>=2.7, !=3.0.*, !=3.1.*, !=3.2.*, <4',
 )
-

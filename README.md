@@ -22,8 +22,12 @@ over USB.
 ## Installation
 
 Extract and run
-
-    # python setup.py install
+```bash
+pip install --upgrade pip
+pip install --upgrade wheel
+python setup.py sdist bdist_wheel
+```
+This should generate the ./dist/*.whl, which can be install with `pip install ./dist/*.whl`
 
 ## Configuring udev
 
